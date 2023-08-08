@@ -1,0 +1,117 @@
+h1 .menuItemTitle {
+    margin: 0;
+    padding-top: 1em;
+    font-size: 1.5em;
+    color: rgb(2, 83, 145);
+}
+
+.conversationCard {
+    background-color: rgb(253, 253, 253);
+    margin: 2em auto;
+    border: 2px none rgb(121, 121, 121);
+    border-radius: 5%;
+    padding: 15px;
+    box-shadow:  12px 12px 6px -6px rgba(114, 113, 113, 0.2);
+    max-width: 300px;
+}
+
+
+.conversationCardImage {
+    width: 70%;
+    box-shadow: 12px 12px 6px -6px rgba(114, 113, 113, 0.2);
+    border: solid gray 5px;
+    border-radius:5%;
+}
+
+.conversation-piece {
+    margin: 0 1em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+.profilePic {
+    width: 3em;
+}
+
+.lineBlock {
+    display: flex;
+    align-items: center;
+}
+
+.icon-small {
+    width: 1.5em;
+    margin-right: 10px;
+}
+
+.dialogBubble {
+    border: solid lightgray 3px;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 0 10px;
+    z-index: 0;
+    position: relative;
+}
+
+.dialogBubble:before,
+.dialogBubble:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+.dialogBubble:before {
+	left: -25px;
+	top: calc(50% - 2px);
+	border: 13px solid;
+	border-color:transparent lightgray transparent transparent;
+}
+
+.dialogBubble:after {
+	left: -20px;
+	top: 50%;
+	border: 11px solid;
+	border-color:transparent #f5fafd transparent  transparent;
+}
+
+.inline-flex{
+    display: inline-flex;
+    align-items: center;
+}
+
+.dialog-fr{
+    align-items: center;
+    text-align: left;
+    color: darkblue;
+    font-size: 1.25em;
+}
+
+.dialog-nonfr{
+    text-align: left;
+    margin-left: 34px;
+    margin-top: 0;
+    line-height: 130%;
+}
+
+.dimScreen {
+    position:fixed;
+    padding:0;
+    margin:0;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background:rgba(45, 45, 45, 0.7);
+}
+
+.withIndex {
+    border-bottom: dotted black 2px;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

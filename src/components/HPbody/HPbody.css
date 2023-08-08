@@ -1,0 +1,32 @@
+
+
+.beaverImg {
+    object-fit: contain;
+    height: 270px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.pitchLine{
+    margin: 1.5em
+}
+
+.pitchLine-single h1{
+    font-size: 1.5em;
+    color: rgb(121, 121, 121);
+    font-style: italic;
+}
+
+.pitchLine-single {
+    background-color: rgb(253, 253, 253);
+    margin-bottom: 2em;
+    border: 2px none rgb(121, 121, 121);
+    border-radius: 5%;
+    padding: 15px;
+    box-shadow:  8px 8px 6px -6px rgba(114, 113, 113, 0.2);
+}
+
+.pitchLine-image {
+    height: 9em;
+    width: 9em;
+}
