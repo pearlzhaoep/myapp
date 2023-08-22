@@ -35,6 +35,10 @@
     background: rgb(210, 206, 206, 0);
 }
 
+.navigation-menu-desktop {
+    display:none;
+}
+
 .navigation-menu {
     display:flex;
     width: 100%;
@@ -65,4 +69,50 @@
     display: block;
     width: 100%;
     font-size: 1.25em;
+  }
+
+  @media only screen and (min-width: 768px){
+    .drop-menu {
+        display: none;
+    }
+
+    .navigation-menu-desktop {
+        display: flex;
+        align-items: center;
+        margin-left: 2em;
+    }
+
+    .navigation-menu-desktop ul {
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin: 0;
+    }
+
+    .navigation-menu-desktop li {
+        display: inline-block;
+        list-style: none;
+        padding: 0;        
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .navigation-menu-desktop li a {
+        text-decoration: none;
+        color: rgb(49, 49, 49);
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 1em;
+    }
+
+    .navigation-menu-desktop li a:hover {
+        color: white;
+    }
+
+    .navigation-menu-desktop li:hover {
+        background-color: rgb(143, 213, 253);
+    }
   }

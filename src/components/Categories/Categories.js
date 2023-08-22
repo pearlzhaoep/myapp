@@ -51,11 +51,13 @@ export default function Categories() {
         <div>
             <div className="categoryMenu" style={isTitlePage? {display: "block"} : {display: "none"}}>
                 <h1 className="menuItemTitle">Expressions By Categories</h1>
+                <div className="categoryCardContainer">
                 {
                     categories.map(card => {
                         return <CategoryCard id={card.id} card={card} handleClick={handleClick(card.id)} />
                     })
                 }
+                </div>
             </div>
             <div>
             {

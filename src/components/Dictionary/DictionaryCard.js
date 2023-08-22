@@ -1,13 +1,21 @@
+import { useEffect } from "react"
+
 export default function DictionaryCard(props) {
 
     const playAudio = audio => {
         const audioToPlay = new Audio(audio)
         audioToPlay.play()
     }
+
+    useEffect(()=>{
+        if(props.word&&props.isCard){
+                    playAudio(props.word.wordAudio)
+        }
+    })
     
     return (
         props.word ?
-            <div className="categoryCard card-float">
+            <div className="dictionaryCard card-float">
                 <div className="flexbox justyfy-center">
                     <h2>{props.word.word}</h2>
                     <button className="no-button-decoration" onClick={()=>playAudio(props.word.wordAudio)}><img className="playButton" src="/media/headphone.svg" alt="play button" /><audio src={props.word} /></button>

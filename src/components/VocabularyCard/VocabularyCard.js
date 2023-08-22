@@ -11,19 +11,19 @@ export default function VocabulalryCard(props) {
         const audioToPlay = new Audio(audio)
         audioToPlay.play()
     }
-
-    console.log({
-        currentWord,
-        currentIndex,
-        words,
-        idList
-    })
     
     return (
         currentWord ? 
-        <div className="padding-2em">
+            <div className="margin-auto">
+            <div className="flexbox justify-between">
+            <div>
+            <button className="no-button-decoration" style={currentIndex === 0 ? {display: "none"} : {display: "block"}} onClick={() => {let i = currentIndex; i--; setCurrentIndex(i)}} >←</button>
+            <button className="no-button-decoration" style={currentIndex === idList.length-1 ? {display: "none"} : {display: "block"}} onClick={() => {let i = currentIndex; i++; setCurrentIndex(i)}}>→</button>
+            </div>
+            <button className="no-button-decoration" onClick={props.handleClick} >X</button>
+            </div>
             <div className="vocabCard">
-                <div className="flexbox justyfy-center">
+                <div className="flexbox justify-center">
                     <h2>{currentWord.word}</h2>
                     <button className="no-button-decoration" onClick={()=>playAudio(currentWord.wordAudio)}><img className="playButton" src="/media/headphone.svg" alt="play button" /><audio src={currentWord.wordAudio} /></button>
                 </div>
@@ -45,9 +45,6 @@ export default function VocabulalryCard(props) {
                     })
                 }
             </div>
-            <button className="no-button-decoration" style={currentIndex === 0 ? {visibility: "hidden"} : {visibility: "visible"}} onClick={() => {let i = currentIndex; i--; setCurrentIndex(i)}} >←</button>
-            <button className="no-button-decoration" onClick={props.handleClick} >X</button>
-            <button className="no-button-decoration" style={currentIndex === idList.length-1 ? {visibility: "hidden"} : {visibility: "visible"}} onClick={() => {let i = currentIndex; i++; setCurrentIndex(i)}}>→</button>
-        </div> : <></>
+            </div> : <></>
         )
 }

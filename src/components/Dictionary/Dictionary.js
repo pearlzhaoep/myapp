@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {words} from "../../db"
+import './Dictionary.css'
 import DictionaryEntry from "./DictionaryEntry";
 import DictionaryCard from "./DictionaryCard";
 
@@ -40,17 +41,19 @@ const toggleCard = () => {
                         <div>
                             <div className="entrys">
                                 <h1 className="entry-index">{inital}</h1>
+                                <div className="entries-container">
                                 {
                                     dict[inital].map(word => {
                                         return <DictionaryEntry id={word[1]} word={word[0]} handleClick={handleClick(word[1])} />})
                                 }
+                                </div>
                             </div>
                         </div>
                     )
                 })
             }
             <div className="entry-card" style={isCard ? { display: "block" } : { display: "none" }}>
-                <div id="dimScreen"><DictionaryCard word={currentWord} handleClick={toggleCard} /></div>                
+                <div id="dimScreen"><DictionaryCard word={currentWord} handleClick={toggleCard} isCard={isCard}/></div>                
             </div>
         </div>
     )

@@ -7,10 +7,15 @@ export default function ConversationPiece(props) {
     const { dialog, profile } = props.conversation || {}
     const [isCard, setIscard] = useState(false)
     const [currentWord, setCurrentWord] = useState()
+    const [singleAudio, setSingleAudio] = useState()
 
-    const playAudio = audio => {
-        const audioToPlay = new Audio(audio)
-        audioToPlay.play()
+    const playSingleAudio = audio => {
+        if(singleAudio){
+            singleAudio.pause()
+            console.log(singleAudio)
+        }
+        setSingleAudio(new Audio(audio));
+        singleAudio.play()
     }
     const showVocabCard =(id) => {
         console.log("Clicked")
@@ -29,7 +34,7 @@ export default function ConversationPiece(props) {
                                     <img className="profilePic" src={profile[index % 2]} alt="speaker picture" />
                                     <div className="dialogBubble">
                                         <div className="inline-flex">
-                                            <span onClick={() => playAudio(line.audio)}><img className="playButton icon-small" src="/media/headphone.svg" alt="play button" /></span>
+                                            <span className="audioButton" onClick={() => playSingleAudio(line.audio)}><img className="playButton icon-small" src="/media/headphone.svg" alt="play button" /></span>
                                             <div className="dialog-fr"><FrenchLine line={line.fr} wordList={line.link} handleClick={showVocabCard} /></div>
                                         </div>
                                         <p className="dialog-nonfr">{line.en}</p>

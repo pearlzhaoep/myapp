@@ -19,9 +19,9 @@ export default function HPbody() {
                     <img className='pitchLine-image' src="/media/randomIcon.png" alt="icon" />
                     <h1>Follow our conversations</h1>
                     <p>They are filled with expressions that you won't be learning from school with vocabularies and examples explained in French and English.</p>
-                </div>
-                <button>Let's try it out!</button>
+                </div>  
             </div>
+            <a className='HPButton' href='/conversation'>Let's try it out!</a>
         </div>
     )
 }

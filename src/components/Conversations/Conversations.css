@@ -33,6 +33,18 @@ h1 .menuItemTitle {
     width: 3em;
 }
 
+.audioButton{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 100%;
+    border-bottom: solid 2px rgb(181, 182, 182);
+}
+
+.audioButton:active {
+    border-bottom: none;
+}
+
 .lineBlock {
     display: flex;
     align-items: center;
@@ -40,7 +52,7 @@ h1 .menuItemTitle {
 
 .icon-small {
     width: 1.5em;
-    margin-right: 10px;
+    padding: 0.4em;
 }
 
 .dialogBubble {
@@ -80,6 +92,7 @@ h1 .menuItemTitle {
 }
 
 .dialog-fr{
+    margin-left: 10px;
     align-items: center;
     text-align: left;
     color: darkblue;

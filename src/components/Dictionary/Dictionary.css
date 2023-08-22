@@ -39,6 +39,17 @@
     background:rgba(45, 45, 45, 0.7);
 }
 
+.dictionaryCard {
+    background-color: rgb(253, 253, 253);
+    margin: 2em auto;
+    border: 2px none rgb(121, 121, 121);
+    border-radius: 5%;
+    padding: 15px;
+    box-shadow:  12px 12px 6px -6px rgba(114, 113, 113, 0.2);
+    width: 90vw;
+    max-width: 600px;
+}
+
 .playButton{
     width: 2em;
 }
@@ -74,7 +85,6 @@
 
 .card-float{
     position: absolute;
-    width: 90vw;
     margin: 10vh auto; 
     top: 0;
     left: 0;
@@ -85,4 +95,23 @@
 .scroll{
     max-height: 45vh;
     overflow-y:auto;
+}
+
+@media only screen and (min-width: 768px){
+
+    .entrys {
+        margin: 0 13vw;
+        text-align: center;
+    }
+
+    .entry-button{
+        width: 25vw;
+    }
+
+    .entries-container{
+        display: flex;
+        margin: 10vm 0;
+        gap: 0.5em;
+    }
+
 }
