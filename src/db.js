@@ -111,7 +111,7 @@ const words = [
         examples: [
             {
                 audio: "",
-                fr: "Chu tanné, là",
+                fr: "Chu tanné, là.",
                 en: "I'm tired of it.",
                 es: "Estoy cansado."
             },
@@ -144,7 +144,7 @@ const words = [
             {
                 audio: "",
                 fr: "T'es tu venu en char?",
-                en: "Did you come by car",
+                en: "Did you come by car?",
                 es: "¿Viniste en coche?"
             }
         ]
