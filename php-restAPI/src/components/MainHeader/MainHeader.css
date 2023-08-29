@@ -1,0 +1,118 @@
+.fixed{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.navBar{
+    display: flex;
+    height: 64px;
+    border-bottom: 2px solid rgb(178, 219, 248);
+    justify-content: space-between;
+    background-color: rgb(182, 221, 255);
+    box-shadow: 0 8px 6px -6px rgba(114, 113, 113, 0.2);
+    padding: 0 1.5em 0 1.5em;
+}
+
+.no-button-style {
+    border: none;
+    text-decoration: none;
+    color: rgb(2, 83, 145);
+    background-color: rgb(210, 231, 249, 0);
+}
+
+
+.main-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-menu-container {
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    background: rgb(210, 206, 206, 0);
+}
+
+.navigation-menu-desktop {
+    display:none;
+}
+
+.navigation-menu {
+    display:flex;
+    width: 100%;
+    top: 65.6px;
+    background-color: rgb(182, 221, 255);
+    border-radius: 2%;
+    padding: 0;
+}
+
+.navigation-menu ul{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-left: 0;
+}
+
+.navigation-menu li {
+    list-style: none;
+    margin: 1.5em 2.5em;
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(2, 83, 145);
+  }
+
+.navigation-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    font-size: 1.25em;
+  }
+
+  @media only screen and (min-width: 768px){
+    .drop-menu {
+        display: none;
+    }
+
+    .navigation-menu-desktop {
+        display: flex;
+        align-items: center;
+        margin-left: 2em;
+    }
+
+    .navigation-menu-desktop ul {
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin: 0;
+    }
+
+    .navigation-menu-desktop li {
+        display: inline-block;
+        list-style: none;
+        padding: 0;        
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .navigation-menu-desktop li a {
+        text-decoration: none;
+        color: rgb(49, 49, 49);
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 1em;
+    }
+
+    .navigation-menu-desktop li a:hover {
+        color: white;
+    }
+
+    .navigation-menu-desktop li:hover {
+        background-color: rgb(143, 213, 253);
+    }
+  }

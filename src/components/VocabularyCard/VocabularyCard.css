@@ -1,0 +1,72 @@
+.playButton{
+    width: 2em;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 10px;
+    margin: 5px 10px;
+}
+
+.meme {
+    width: 90%;
+}
+
+.cardText {
+    margin: 0;
+}
+
+.dark-blue{
+    color: darkblue;
+}
+
+.no-button-decoration {
+    background-color: white;
+    border: none;
+    border-radius: 30%;
+    border-bottom: solid 2px rgb(181, 182, 182);
+    border-right: solid 2px rgb(181, 182, 182);
+    margin: 13px 5px 13px 5px;
+    padding-top: 3px;
+}
+
+.no-button-decoration:active{
+    border-color: white;
+}
+
+.vocabCard {
+    background-color: rgb(253, 253, 253);
+    border: 2px none rgb(121, 121, 121);
+    border-radius: 5%;
+    padding: 15px;
+    box-shadow:  12px 12px 6px -6px rgba(114, 113, 113, 0.2);
+    margin-top: 0;
+    margin: auto;
+}
+
+.margin-auto {
+    margin: auto;
+    width: 90vw;
+    max-width: 600px;
+}
+
+.padding-2em{
+    padding-top: 2em;
+}
+
+.line-height-150 {
+    line-height: 150%;
+}
