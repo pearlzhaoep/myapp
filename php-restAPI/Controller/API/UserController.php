@@ -10,9 +10,7 @@ class UserController extends BaseController{
                 $userModel = new UserModel();
                 $responseData = null;
                 if(isset($arrQueryStringParams['categoryId'])){
-                    $arrWordList = $userModel->getWordByCategory($arrQueryStringParams['categoryId']);
-                    print_r($arrWordList);
-                    $responseData = json_encode($arrWordList);
+                    $responseData = $userModel->getWordByCategory($arrQueryStringParams['categoryId']);
                 }
                 else throw new Exception('Error. Invalid parameters.');
             } catch (Exception $e) {

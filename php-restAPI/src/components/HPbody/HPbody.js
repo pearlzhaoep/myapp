@@ -1,6 +1,4 @@
 import './HPbody.css'
-import { HPbodyContent } from './HPbodyModel'
-
 
 export default function HPbody() {
     return (
@@ -9,21 +7,21 @@ export default function HPbody() {
             <div className='pitchLine'>
                 <div className='pitchLine-single'>
                     <img className='pitchLine-image' src="/media/randomIcon.png" alt="icon" />
-                    <h1>{HPbodyContent['en'].cards[0].title}</h1>
-                    <p>{HPbodyContent['en'].cards[0].content}</p>
+                    <h1>New to Quebec?</h1>
+                    <p>Confused about the expressions Quebecois while struggling to learn French at the same time?</p>
                 </div>
                 <div className='pitchLine-single'>
                     <img className='pitchLine-image' src="/media/randomIcon.png" alt="icon" />
-                    <h1>{HPbodyContent['en'].cards[1].title}</h1>
-                    <p>{HPbodyContent['en'].cards[1].content}</p>
+                    <h1>We understand!</h1>
+                    <p>We've compiled the most commonly used expressions Quebecois to help you understand and speak like a local!</p>
                 </div>
                 <div className='pitchLine-single'>
                     <img className='pitchLine-image' src="/media/randomIcon.png" alt="icon" />
-                    <h1>{HPbodyContent['en'].cards[2].title}</h1>
-                    <p>{HPbodyContent['en'].cards[2].content}</p>
+                    <h1>Follow our conversations</h1>
+                    <p>They are filled with expressions that you won't be learning from school with vocabularies and examples explained in French and English.</p>
                 </div>  
             </div>
-            <a className='HPButton' href='/conversation'>{HPbodyContent['en'].startButton}</a>
+            <a className='HPButton' href='/conversation'>Let's try it out!</a>
         </div>
     )
 }

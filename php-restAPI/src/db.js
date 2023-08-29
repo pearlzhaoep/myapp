@@ -181,66 +181,6 @@ const conversations = [
                 link: [{order: 0, wordId: 2}, {order: 2, wordId: 6}, {order: 15, wordId: 4}]
             },
         ] 
-    },
-    {
-        id: 2,
-        title: "Ostie de la pluie",
-        cover:'/media/rain.svg',
-        profile: ['/media/randomIcon.png', '/media/fleurdulys.svg'],
-        fullAudio: '/media/sample-12s.wav',
-        dialog: [
-            {
-            fr: "On va tu manger avec Maggie ce soir?",
-            en: "Are we gonna have dinner with Maggie tonight?",
-            es: "Vamos a cenar con Maggie esta noche?",
-            audio: '/media/sample-12s.wav',
-            link: [{order: 2, wordId: 6}]
-            },
-            {
-                fr: "No. A m'a dit qu'a mal aux genoux. A cause de la pluie.",
-                en: "No. She told me her knees hurt. Because of the rain.",
-                es: "Vamos a cenar con Maggie esta noche?",
-                audio: '/media/sample-12s.wav',
-                link: [{order: 1, wordId: 3}, {order: 4, wordId: 3}]
-            },
-            {
-                fr: "Crisse, chu tanné de cette ostie de pluie, là. C'est presque la fin de l'été, t'sais?",
-                en: "Christ, I'm tired of the freaking rain. It's almost the end of the summer you know?",
-                es: "Vamos a cenar con Maggie esta noche?",
-                audio: '/media/sample-12s.wav',
-                link: [{order: 0, wordId: 2}, {order: 2, wordId: 6}, {order: 15, wordId: 4}]
-            },
-        ] 
-    },
-    {
-        id: 3,
-        title: "Ostie de la pluie",
-        cover:'/media/rain.svg',
-        profile: ['/media/randomIcon.png', '/media/fleurdulys.svg'],
-        fullAudio: '/media/sample-12s.wav',
-        dialog: [
-            {
-            fr: "On va tu manger avec Maggie ce soir?",
-            en: "Are we gonna have dinner with Maggie tonight?",
-            es: "Vamos a cenar con Maggie esta noche?",
-            audio: '/media/sample-12s.wav',
-            link: [{order: 2, wordId: 6}]
-            },
-            {
-                fr: "No. A m'a dit qu'a mal aux genoux. A cause de la pluie.",
-                en: "No. She told me her knees hurt. Because of the rain.",
-                es: "Vamos a cenar con Maggie esta noche?",
-                audio: '/media/sample-12s.wav',
-                link: [{order: 1, wordId: 3}, {order: 4, wordId: 3}]
-            },
-            {
-                fr: "Crisse, chu tanné de cette ostie de pluie, là. C'est presque la fin de l'été, t'sais?",
-                en: "Christ, I'm tired of the freaking rain. It's almost the end of the summer you know?",
-                es: "Vamos a cenar con Maggie esta noche?",
-                audio: '/media/sample-12s.wav',
-                link: [{order: 0, wordId: 2}, {order: 2, wordId: 6}, {order: 15, wordId: 4}]
-            },
-        ] 
     }
 ]
 

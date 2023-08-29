@@ -21,9 +21,9 @@ export default function MainHeader() {
                     <MenuListIcon style={isMenuExpanded ? { display: "none" } : { display: "block" }} />
                     <MenuCloseIcon style={isMenuExpanded ? { display: "block" } : { display: "none" }} />
                 </button>
-                <div style={{ display: 'flex' }} >
-                    <div className='main-logo'><a href="/">LangApp</a></div>
-                    <div className="navigation-menu-desktop">
+                <div style ={{display: 'flex'}} >
+                <div className='main-logo'><a href="/">LangApp</a></div>
+                <div className="navigation-menu-desktop">
                         <ul>
                             <li>
                                 <NavLink to="/conversation" onClick={chooseMenu}>Conversations</NavLink>
@@ -35,31 +35,18 @@ export default function MainHeader() {
                                 <NavLink to="/directory" onClick={chooseMenu}>Directory</NavLink>
                             </li>
                         </ul>
-                    </div>
                 </div>
-                <div class="language" role="radiogroup" aria-labelledby="language-switcher1">
-                    <div class="language__container--left language__container--fr">
-                        <input class="language__control" type="radio" id="language1-1" name="language-switch1" />
-                            <label class="language__label" for="language1-1">
-                                FR
-                            </label>
-                    </div>
-                    <div class="language__container--right language__container--en">
-                        <input class="language__control" type="radio" id="language1-2" name="language-switch1" />
-                            <label class="language__label" for="language1-2">
-                                EN
-                            </label>
-                    </div>
                 </div>
+                <button className="no-button-style">EN</button>
             </nav>
             <div className="navigation-menu-container" style={isMenuExpanded ? { display: "block" } : { display: "none" }} onClick={() => { setIsMenuExpanded(!isMenuExpanded) }}>
                 <div className="navigation-menu" >
                     <ul>
                         <li>
-                            <NavLink to="/conversation" onClick={chooseMenu}>Learn by Conversations</NavLink>
+                            <NavLink to="/conversation" onClick={chooseMenu}>Learn By Conversations</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/category" onClick={chooseMenu}>Expressions by Categories</NavLink>
+                            <NavLink to="/category" onClick={chooseMenu}>Expressions By Categories</NavLink>
                         </li>
                         <li>
                             <NavLink to="/directory" onClick={chooseMenu}>Vocabulary Index</NavLink>

@@ -22,7 +22,7 @@ class BaseController {
                 header($header);
             }
         }
-        //echo $data;
+        echo $data;
         exit;
     }
 }
