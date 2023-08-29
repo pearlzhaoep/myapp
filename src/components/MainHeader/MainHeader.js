@@ -37,17 +37,17 @@ export default function MainHeader() {
                         </ul>
                     </div>
                 </div>
-                <div class="language" role="radiogroup" aria-labelledby="language-switcher1">
-                    <div class="language__container--left language__container--fr">
-                        <input class="language__control" type="radio" id="language1-1" name="language-switch1" />
-                            <label class="language__label" for="language1-1">
-                                FR
+                <div class="language" role="radiogroup" aria-labelledby="language-switcher">
+                    <div class="language__container--left language__container--en">
+                        <input class="language__control" type="radio" id="language1" name="language-switch" />
+                            <label class="language__label" for="language1">
+                                EN
                             </label>
                     </div>
-                    <div class="language__container--right language__container--en">
-                        <input class="language__control" type="radio" id="language1-2" name="language-switch1" />
-                            <label class="language__label" for="language1-2">
-                                EN
+                    <div class="language__container--right language__container--fr">
+                        <input class="language__control" type="radio" id="language2" name="language-switch" />
+                            <label class="language__label" for="language2">
+                                ES
                             </label>
                     </div>
                 </div>
