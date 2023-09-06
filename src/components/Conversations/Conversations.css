@@ -25,7 +25,7 @@ h1 .menuItemTitle {
 
 .conversation-piece {
     margin: 0 1em;
-    padding-top: 1em;
+    padding-top: 2em;
     padding-bottom: 2em;
 }
 
@@ -121,10 +121,16 @@ h1 .menuItemTitle {
     border-bottom: dotted black 2px;
 }
 
-.fixed-bottom {
+.fixed-top {
     position: fixed;
-    bottom: 0;
+    top: 4.5em;
     display: flex;
     justify-content: center;
     width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .lineBlock {
+        margin-left: 2em;
+    }
 }

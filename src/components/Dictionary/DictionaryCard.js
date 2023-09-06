@@ -21,18 +21,19 @@ export default function DictionaryCard(props) {
                     <button className="no-button-decoration" onClick={()=>playAudio(props.word.wordAudio)}><img className="playButton" src="/media/headphone.svg" alt="play button" /><audio src={props.word} /></button>
                 </div>
                 <img className="meme" src={props.word.meme} alt="meme"/>
+                {props.word.category === 1 ? <p className="font-red">🌶️Attention! This is cursing!🌶️</p> : <></>}
                 <div className="scroll">
                 <h3 >Explanation</h3>
-                <p className="cardText dark-blue">{props.word.explaination.fr}</p>
+                <p className="cardText dark-blue">{props.word.explainFrench}</p>
                 <p className="cardText">-</p>
-                <p className="cardText">{props.word.explaination.en}</p>
+                <p className="cardText">{props.word.explainForeign}</p>
                 <h3 >Examples</h3>
                 {
-                    props.word.examples.map(example => {
+                    props.word.exampleList.map(example => {
                         return (
                             <div>
-                            <p className="cardText dark-blue">{example.fr}</p>
-                            <p className="cardText">{example.en}</p>
+                            <p className="cardText dark-blue">{example.exampleFrench}</p>
+                            <p className="cardText">{example.exampleForeign}</p>
                             <p className="cardText">-</p>
                             </div>
                         )

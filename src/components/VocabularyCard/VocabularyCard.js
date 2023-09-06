@@ -1,17 +1,15 @@
 import { useState } from "react";
-import {words} from "../../db";
 import './VocabularyCard.css';
 
 export default function VocabulalryCard(props) {
     let wordList = props.wordList;
     const [currentIndex, setCurrentIndex] = useState(0)
-    console.log(wordList)
 
     const playAudio = audio => {
         const audioToPlay = new Audio(audio)
         audioToPlay.play()
     }
-    
+    console.log(wordList)
     return (
         wordList ? 
             <div className="margin-auto">

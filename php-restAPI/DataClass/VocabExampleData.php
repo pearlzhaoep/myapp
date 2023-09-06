@@ -9,7 +9,7 @@ class VocabExampleData {
         $this->id = $item['id'];
         $this->wordId = $item['word_id'];
         $this->exampleFrench = $item['example_fr'];
-        $this->exampleForeign = $item['example_en'];
+        $this->exampleForeign = $item['example_foreign'];
     }
 
     function getVar(){

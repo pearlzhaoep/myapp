@@ -1,31 +1,39 @@
 import CategoryCard from "./CategoryCard"
 import './Categories.css';
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import VocabularyCard from "../VocabularyCard/VocabularyCard";
-import { MenuClose } from "../Provider";
+import { LanguageSwitch, MenuClose } from "../Provider";
 import { CategoriesModel } from "./CategoriesModel";
 
 
 export default function Categories() {
     const { isTitlePage, setIsTitlePage }  = useContext(MenuClose);
-    const [ wordList, setWordList ] = useState([]);
+    const { language } = useContext(LanguageSwitch);
+    const [ wordList, setWordList ] = useState(undefined);
+
+    useEffect(()=>{
+        if(!isTitlePage){
+            fetchByCategoryId(wordList[0].category)
+            setIsTitlePage(!isTitlePage)
+        }
+    }, [language])
 
     const fetchByCategoryId = (id) => {
-        console.log("test")
-        fetch(`http://localhost/php-restAPI/index.php/category?categoryId=${id}`, {
+        fetch(`http://localhost/php-restAPI/index.php/category?categoryId=${id}&language=${language}`, {
             method: 'GET',
             headers: {'Content-Type': 'application/json',},
         })
         .then((response) =>  response.json())
         .then((parsed) => {
             setWordList(parsed)
-            toggleMenu()
+
             }
         ).catch(console.error)
     }
 
     const handleClick =(id) => (e) => {
-        fetchByCategoryId(id)
+        fetchByCategoryId(id)            
+        toggleMenu()
     }
 
     const toggleMenu = () => {
@@ -46,7 +54,7 @@ export default function Categories() {
             </div>
             <div>
             {
-               isTitlePage? "" :<VocabularyCard wordList={wordList} handleClick={toggleMenu} />
+               isTitlePage? "" :<VocabularyCard wordList={wordList} handleClick={toggleMenu} language={language} />
             }
             </div>
         </div>

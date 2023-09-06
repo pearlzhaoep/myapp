@@ -1,37 +1,63 @@
-import { useState } from "react";
-import {words} from "../../db"
+import { useContext, useEffect, useState } from "react";
 import './Dictionary.css'
 import DictionaryEntry from "./DictionaryEntry";
 import DictionaryCard from "./DictionaryCard";
+import { LanguageSwitch } from "../Provider";
 
 export default function Dictionary() {
     const [isCard, setIscard] = useState(false)
     const [currentWord, setCurrentWord] = useState()
+    const [ dict, setDict ] = useState({})
+    const {language} = useContext(LanguageSwitch)
 
-    let sortedWords = words.toSorted(function (a, b) {
-        return a.word.localeCompare(b.word);
-    })
-    let dict = sortedWords.reduce((a, c) => {
-        let k = c.word[0].toLocaleUpperCase()
-        if (a[k]) a[k].push([c.word, c.id])
-        else a[k] = [[c.word, c.id]]
-        return a
-    }, {})
-    Object.keys(dict).map(key => {
-        return dict[key].sort(function (a, b) {
-            return a[0].localeCompare(b[0]);
+    const getAllWordOnly = () => {
+        fetch(`http://localhost/php-restAPI/index.php/dictionary`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json',},
         })
-    })
+        .then((response) =>  response.json())
+        .then((parsed) => {
+            let sortedWords = parsed.toSorted(function (a, b) {
+                return a.word.localeCompare(b.word);
+            })
+            let tempDict = sortedWords.reduce((a, c) => {
+                let k = c.word[0].toLocaleUpperCase()
+                if (a[k]) a[k].push([c.word, c.id])
+                else a[k] = [[c.word, c.id]]
+                return a
+            }, {})
+            Object.keys(tempDict).map(key => {
+                return tempDict[key].sort(function (a, b) {
+                    return a[0].localeCompare(b[0]);
+                })
+            })
+            setDict(tempDict)
+            }
+        ).catch(console.error)
+    }
 
-const toggleCard = () => {
+    const getWordById = (id) => {
+        fetch(`http://localhost/php-restAPI/index.php/dictionary?wordId=${id}&language=${language}`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json',},
+        })
+        .then((response) =>  response.json())
+        .then((parsed) => {
+            setCurrentWord(parsed)
+            }
+        ).catch(console.error)
+    }
+
+    const toggleCard = () => {
     setIscard(!isCard)
-}
+    }
 
     const handleClick = (id) => () => {
-        let currentId = id
-        setCurrentWord(words.find(word => word.id === currentId))
+        getWordById(id)
         toggleCard()
     }
+
+    useEffect(getAllWordOnly, [])
 
     return (
         <div>

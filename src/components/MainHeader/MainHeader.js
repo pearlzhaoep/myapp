@@ -3,11 +3,12 @@ import { ReactComponent as MenuListIcon } from './menu-list-icon.svg'
 import { ReactComponent as MenuCloseIcon } from './menu-list-close.svg'
 import { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom';
-import { MenuClose } from '../Provider';
+import { LanguageSwitch, MenuClose } from '../Provider';
 
 export default function MainHeader() {
     const [isMenuExpanded, setIsMenuExpanded] = useState(false);
     const { setIsTitlePage } = useContext(MenuClose)
+    const { language, setLanguage } = useContext(LanguageSwitch)
 
     const chooseMenu = () => {
         setIsMenuExpanded(false)
@@ -37,16 +38,16 @@ export default function MainHeader() {
                         </ul>
                     </div>
                 </div>
-                <div class="language" role="radiogroup" aria-labelledby="language-switcher">
-                    <div class="language__container--left language__container--en">
-                        <input class="language__control" type="radio" id="language1" name="language-switch" />
-                            <label class="language__label" for="language1">
+                <div className="language" role="radiogroup" aria-labelledby="language-switcher">
+                    <div className="language__container--left language__container--en">
+                        <input className="language__control" type="radio" id="language1" name="language-switch" value="en" onChange={(e)=>setLanguage(e.target.value)} checked={language === "en"}/>
+                            <label className="language__label" htmlFor="language1">
                                 EN
                             </label>
                     </div>
-                    <div class="language__container--right language__container--fr">
-                        <input class="language__control" type="radio" id="language2" name="language-switch" />
-                            <label class="language__label" for="language2">
+                    <div className="language__container--right language__container--fr">
+                        <input className="language__control" type="radio" id="language2" name="language-switch" value="es" onChange={(e)=>setLanguage(e.target.value)} checked={language === "es"}/>
+                            <label className="language__label" htmlFor="language2">
                                 ES
                             </label>
                     </div>

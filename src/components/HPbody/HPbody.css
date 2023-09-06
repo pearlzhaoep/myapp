@@ -1,4 +1,6 @@
-
+.HPbody {
+    padding-bottom: 4em;
+}
 
 .beaverImg {
     object-fit: contain;
@@ -44,6 +46,50 @@
     border-bottom:none;
 }
 
+.HPfooter {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    background-color: rgb(121, 189, 248);
+}
+
+.poutine {
+    object-fit: contain;
+    max-height: 1.5em;
+}
+
+.contactUs {
+    margin-bottom: 0;
+}
+
+form {
+    text-align: left;
+}
+
+form textarea {
+    border: solid 0 black;
+    border-radius: 4px;
+}
+
+.sendButton {
+    font-family: 'ABeeZee';
+    font-size: 1em;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(189, 222, 251);
+    border-radius: 5px;
+    border: solid 0 black;
+    border-bottom: solid 2px rgb(63, 124, 255);
+    padding: 0.3em;
+    margin-top: 0.5em;
+}
+
+.sendButton:active {
+    border-bottom: none;
+}
+
 @media only screen and (min-width: 768px){
     .pitchLine{
         display: flex;
@@ -54,5 +100,10 @@
     .pitchLine-single{
         width: 25vw;
         max-width: 300px;
+    }
+
+    .HPfooter {
+        flex-direction: row;
+        gap: 3em;
     }
 }

@@ -40,13 +40,16 @@
 }
 
 .dictionaryCard {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(253, 253, 253);
     margin: 2em auto;
     border: 2px none rgb(121, 121, 121);
     border-radius: 5%;
     padding: 15px;
     box-shadow:  12px 12px 6px -6px rgba(114, 113, 113, 0.2);
-    width: 90vw;
+    width: 85vw;
+    max-height: 80vh;
     max-width: 600px;
 }
 
@@ -73,6 +76,11 @@
     max-width: 90%;
     max-height: 30vh;
     object-fit: contain;
+    align-self: center;
+}
+
+.font-red {
+    color: red;
 }
 
 .cardText {
@@ -93,7 +101,6 @@
 }
 
 .scroll{
-    max-height: 45vh;
     overflow-y:auto;
 }
 

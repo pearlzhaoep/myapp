@@ -1,43 +1,59 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import FrenchLine from "./FrenchLine"
-import { words } from "../../db"
 import DictionaryCard from "../Dictionary/DictionaryCard"
+import { LanguageSwitch, MenuClose } from "../Provider";
 
 export default function ConversationPiece(props) {
-    const { dialog, profile } = props.conversation || {}
+    const { isTitlePage, setIsTitlePage }  = useContext(MenuClose);
+    const { language } = useContext(LanguageSwitch)
     const [isCard, setIscard] = useState(false)
     const [currentWord, setCurrentWord] = useState()
-    const [singleAudio, setSingleAudio] = useState()
+    const [currentAudio, setCurrentAudio] = useState(props.conversation ? props.conversation.fullAudio : null)
 
-    const playSingleAudio = audio => {
-        if(singleAudio){
-            singleAudio.pause()
-            console.log(singleAudio)
+    const playCurrentAudio = (audio) => {
+        if(currentAudio){
+            currentAudio.pause()
         }
-        setSingleAudio(new Audio(audio));
-        singleAudio.play()
+        const newAudio = new Audio(audio)
+        setCurrentAudio(newAudio);
+        newAudio.play()
     }
-    const showVocabCard =(id) => {
-        console.log("Clicked")
-        setCurrentWord(words.find(word => word.id === id))
+
+    const showVocabCard = (id) => {
+            fetch(`http://localhost/php-restAPI/index.php/dictionary?wordId=${id}&language=${language}`, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json',},
+            })
+            .then((response) =>  response.json())
+            .then((parsed) => {
+                setCurrentWord(parsed)
+                }
+            ).catch(console.error)
         setIscard(!isCard)
     }
 
     return (
         props.conversation ?
             <div>
+                <div className="fixed-top">
+                <button onClick={()=>{
+                    console.log("playCurrentAudio", typeof playCurrentAudio)
+                    playCurrentAudio(props.conversation.fullAudio)}}>▶</button>
+                <button onClick={()=>currentAudio.pause()}>||</button>
+                <button onClick={()=>setIsTitlePage(!isTitlePage)} >X</button>
+                </div>
                 <div className="conversation-piece">
                     {
-                        dialog.map((line, index) => {
+                        props.conversation.dialogList.map((line, index) => {
                             return (
                                 <div className="lineBlock">
-                                    <img className="profilePic" src={profile[index % 2]} alt="speaker picture" />
+                                    <img className="profilePic" src={line.avatar} alt="speaker picture" />
                                     <div className="dialogBubble">
                                         <div className="inline-flex">
-                                            <span className="audioButton" onClick={() => playSingleAudio(line.audio)}><img className="playButton icon-small" src="/media/headphone.svg" alt="play button" /></span>
-                                            <div className="dialog-fr"><FrenchLine line={line.fr} wordList={line.link} handleClick={showVocabCard} /></div>
+                                            <span className="audioButton" onClick={() => playCurrentAudio(line.audio)}><img className="playButton icon-small" src="/media/headphone.svg" alt="play button" /></span>
+                                            <div className="dialog-fr"><FrenchLine key={index} line={line.lineFrench} wordList={line.linkList} handleClick={showVocabCard} /></div>
                                         </div>
-                                        <p className="dialog-nonfr">{line.en}</p>
+                                        <p className="dialog-nonfr">{line.lineForeign}</p>
                                     </div>
                                 </div>
                             )

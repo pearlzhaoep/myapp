@@ -9,15 +9,23 @@ class VocabData {
     private $explainFrench;
     private $explainForeign;
 
-    function __construct($word){
-        $this->set_id($word['id']);
-        $this->set_word($word['word']);
-        $this->set_category($word['category']);
-        $this->set_wordAudio($word['word_audio']);
-        $this->set_meme($word['meme']);
-        $this->set_exampleList([]);
-        $this->set_explainFrench($word['explain_fr']);
-        $this->set_explainForeign($word['explain_en']);
+    function __construct(){
+    }
+
+    function pushWordFull($word){
+      $this->set_id($word['id']);
+      $this->set_word($word['word']);
+      $this->set_category($word['category']);
+      $this->set_wordAudio($word['word_audio']);
+      $this->set_meme($word['meme']);
+      $this->set_exampleList([]);
+      $this->set_explainFrench($word['explain_fr']);
+      $this->set_explainForeign($word['explain_foreign']);
+    }
+
+    function pushWordOnly($word){
+      $this->set_id($word['id']);
+      $this->set_word($word['word']);
     }
 
     function pushExampleList($example){
@@ -28,9 +36,14 @@ class VocabData {
         $properties = get_object_vars($this);
         $properties['exampleList'] = [];
         foreach($this->exampleList as $example){
-            array_push($properties['exampleList'], $example->getVar());
+          array_push($properties['exampleList'], $example->getVar());
         }
         return $properties;
+    }
+
+    function getVarWordOnly(){
+      $properties = ["id"=>$this->get_id(), "word"=>$this->get_word()];
+      return $properties;
     }
 
     function set_id($id) {

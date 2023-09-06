@@ -1,39 +1,63 @@
-import { useContext, useState } from "react";
-import { conversations } from "../../db"
+import { useContext, useEffect, useState } from "react";
 import ConversationCard from "./ConversationCard"
 import './Conversations.css'
 import ConversationPiece from "./ConversationPiece";
-import { MenuClose } from "../Provider";
+import { LanguageSwitch, MenuClose } from "../Provider";
 
 export default function Converstations(){
     const { isTitlePage, setIsTitlePage }  = useContext(MenuClose);
-    const [ currentConversation, setCurrentConversation ] = useState();
-    const [ audio, setAudio ] = useState()    
+    const [ currentConversation, setCurrentConversation ] = useState();   
+    const [ conversationCovers, setConversationCovers  ] = useState([])
+    const { language } = useContext(LanguageSwitch)
 
-    const covers = conversations.map(conversation => (({id, title, cover}) => ({id, title, cover}))(conversation))
+    const getConversationCoverOnly = () => {
+        fetch(`http://localhost/php-restAPI/index.php/conversation`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json',},
+        })
+        .then((response) =>  response.json())
+        .then((parsed) => {
+            setConversationCovers(parsed)
+            }
+        ).catch(console.error)
+    }
+
+    const getConversationById = (id) => {
+        fetch(`http://localhost/php-restAPI/index.php/conversation?conversationId=${id}&language=${language}`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json',},
+        })
+        .then((response) =>  response.json())
+        .then((parsed) => {
+            setCurrentConversation(parsed)
+            }
+        ).catch(console.error)
+    }
 
     const handleClick = (id) => () => {
-        let newConversation = conversations.find(conversation => conversation.id == id)
-        setCurrentConversation(newConversation)
-        setAudio(new Audio(newConversation.fullAudio))
+        getConversationById(id)
         setIsTitlePage(!isTitlePage)
     }
+
+    const handleLanguageChange = () => {
+        if(!isTitlePage && currentConversation){
+            getConversationById(currentConversation.id)
+        }
+    }
+
+    useEffect(getConversationCoverOnly, [])
+    useEffect(handleLanguageChange, [language])
 
     return (
         <div>
             <div style={isTitlePage? {display: "block"} : {display: "none"}}>
             <h1 className="menuItemTitle">Learn By Conversations</h1>
             {
-                covers.map(cover => {return <ConversationCard key={cover.id} cover={cover} handleClick={handleClick(cover.id)} />})
+                conversationCovers.map(cover => {return <ConversationCard key={cover.id} cover={cover} handleClick={handleClick(cover.id)} />})
             }
             </div>
-            <div style={isTitlePage? {display: "none"} : {display: "block"}}>
+            <div style={isTitlePage? {display: "none"} : {display: "block"}}>                
                 <ConversationPiece conversation={currentConversation} />
-                <div className="fixed-bottom">
-                <button onClick={()=>audio.play()}>▶</button>
-                <button onClick={()=>audio.pause()}>||</button>
-                <button onClick={()=>setIsTitlePage(!isTitlePage)} >X</button>
-                </div>
             </div>
         </div>
     )
