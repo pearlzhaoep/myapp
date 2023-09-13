@@ -14,7 +14,6 @@ export default function Categories() {
     useEffect(()=>{
         if(!isTitlePage){
             fetchByCategoryId(wordList[0].category)
-            setIsTitlePage(!isTitlePage)
         }
     }, [language])
 
@@ -26,7 +25,6 @@ export default function Categories() {
         .then((response) =>  response.json())
         .then((parsed) => {
             setWordList(parsed)
-
             }
         ).catch(console.error)
     }

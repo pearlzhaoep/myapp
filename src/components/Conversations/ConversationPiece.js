@@ -47,7 +47,7 @@ export default function ConversationPiece(props) {
                         props.conversation.dialogList.map((line, index) => {
                             return (
                                 <div className="lineBlock">
-                                    <img className="profilePic" src={line.avatar} alt="speaker picture" />
+                                    <img className="profilePic" src={line.avatar} alt="speaker" />
                                     <div className="dialogBubble">
                                         <div className="inline-flex">
                                             <span className="audioButton" onClick={() => playCurrentAudio(line.audio)}><img className="playButton icon-small" src="/media/headphone.svg" alt="play button" /></span>

@@ -14,7 +14,7 @@ export default function Root() {
         <MenuClose.Provider value={{isTitlePage, setIsTitlePage}} >
             <MainHeader />
             <main>
-                <Outlet/>                
+                <Outlet />                
             </main>
         </MenuClose.Provider>
         </LanguageSwitch.Provider> 
