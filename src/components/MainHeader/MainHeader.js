@@ -4,6 +4,7 @@ import { ReactComponent as MenuCloseIcon } from './menu-list-close.svg'
 import { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { LanguageSwitch, MenuClose } from '../Provider';
+import { MainHeaderContent } from '../../models/MainHeaderModel';
 
 export default function MainHeader() {
     const [isMenuExpanded, setIsMenuExpanded] = useState(false);
@@ -27,13 +28,13 @@ export default function MainHeader() {
                     <div className="navigation-menu-desktop">
                         <ul>
                             <li>
-                                <NavLink to="/conversation" onClick={chooseMenu}>Conversations</NavLink>
+                                <NavLink to="/conversation" onClick={chooseMenu}>{MainHeaderContent[language].DesktopMenu[0]}</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/category" onClick={chooseMenu}>Categories</NavLink>
+                                <NavLink to="/category" onClick={chooseMenu}>{MainHeaderContent[language].DesktopMenu[1]}</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/directory" onClick={chooseMenu}>Directory</NavLink>
+                                <NavLink to="/directory" onClick={chooseMenu}>{MainHeaderContent[language].DesktopMenu[2]}</NavLink>
                             </li>
                         </ul>
                     </div>
@@ -57,13 +58,13 @@ export default function MainHeader() {
                 <div className="navigation-menu" >
                     <ul>
                         <li>
-                            <NavLink to="/conversation" onClick={chooseMenu}>Learn by Conversations</NavLink>
+                            <NavLink to="/conversation" onClick={chooseMenu}>{MainHeaderContent[language].PhoneMenu[0]}</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/category" onClick={chooseMenu}>Expressions by Categories</NavLink>
+                            <NavLink to="/category" onClick={chooseMenu}>{MainHeaderContent[language].PhoneMenu[1]}</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/directory" onClick={chooseMenu}>Vocabulary Index</NavLink>
+                            <NavLink to="/directory" onClick={chooseMenu}>{MainHeaderContent[language].PhoneMenu[2]}</NavLink>
                         </li>
                     </ul>
                 </div>

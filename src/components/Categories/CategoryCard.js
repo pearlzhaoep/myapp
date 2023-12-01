@@ -4,7 +4,6 @@ import { LanguageSwitch } from '../Provider';
 
 export default function CategoryCard(props) {
  const {language} = useContext(LanguageSwitch)
-
     return (
         <div>
             <a className='categoryLink'>

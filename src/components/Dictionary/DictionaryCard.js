@@ -1,35 +1,45 @@
-import { useEffect } from "react"
+import { useContext} from "react"
+import { LanguageSwitch } from "../Provider"
+import {vocabularyCardContent} from "../../models/VocabularyCardModel"
+import { useGetWordByIdQuery } from "../Api/apiSlice"
 
 export default function DictionaryCard(props) {
+    const {language} = useContext(LanguageSwitch)
 
     const playAudio = audio => {
         const audioToPlay = new Audio(audio)
-        audioToPlay.play()
+        const audioPromis = audioToPlay.play()
+        audioPromis.catch(e=>{
+            console.log(e)
+        })
     }
 
-    useEffect(()=>{
-        if(props.word&&props.isCard){
-                    playAudio(props.word.wordAudio)
-        }
-    })
-    
+    const {
+        data: currentWord,
+        isLoading,
+        isSuccess
+    } = useGetWordByIdQuery({ id: props.id, language })
+
     return (
-        props.word ?
+        isLoading ? <></> : isSuccess ?
             <div className="dictionaryCard card-float">
-                <div className="flexbox justyfy-center">
-                    <h2>{props.word.word}</h2>
-                    <button className="no-button-decoration" onClick={()=>playAudio(props.word.wordAudio)}><img className="playButton" src="/media/headphone.svg" alt="play button" /><audio src={props.word} /></button>
+                <div className="flexbox flex-end">
+                    <button className="no-button-style" onClick={props.handleClick}><img className="cardButton" alt="close button" src="/media/card_close.png" /></button>
                 </div>
-                <img className="meme" src={props.word.meme} alt="meme"/>
-                {props.word.category === 1 ? <p className="font-red">🌶️Attention! This is cursing!🌶️</p> : <></>}
+                <div className="flexbox justyfy-center">
+                    <h2 style={{'margin-top': '5px'}}>{currentWord.word}</h2>
+                    <button style={{'margin-top': 0}} className="no-button-decoration" onClick={()=>playAudio(currentWord.wordAudio)}><img className="playButton" src="/media/headphone.svg" alt="play button" /><audio src={currentWord} /></button>
+                </div>
+                <img className="meme" src={currentWord.meme} alt="meme"/>
+                {currentWord.category === 1 ? <p className="font-red">🌶️{vocabularyCardContent.warning[language]}🌶️</p> : <></>}
                 <div className="scroll">
                 <h3 >Explanation</h3>
-                <p className="cardText dark-blue">{props.word.explainFrench}</p>
+                <p className="cardText dark-blue">{currentWord.explainFrench}</p>
                 <p className="cardText">-</p>
-                <p className="cardText">{props.word.explainForeign}</p>
+                <p className="cardText">{currentWord.explainForeign}</p>
                 <h3 >Examples</h3>
                 {
-                    props.word.exampleList.map(example => {
+                    currentWord.exampleList.map(example => {
                         return (
                             <div>
                             <p className="cardText dark-blue">{example.exampleFrench}</p>
@@ -40,8 +50,6 @@ export default function DictionaryCard(props) {
                     })
                 }
                 </div>
-                <button onClick={props.handleClick}>x</button>
-            </div>
-        : <></> 
+            </div> : <></>
         )
 }

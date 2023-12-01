@@ -1,64 +1,39 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ConversationCard from "./ConversationCard"
 import './Conversations.css'
-import ConversationPiece from "./ConversationPiece";
+import ConversationPiece from "../ConversationPiece/ConversationPiece";
 import { LanguageSwitch, MenuClose } from "../Provider";
+import { MainHeaderContent } from "../../models/MainHeaderModel";
+import { useGetConversationCoverQuery } from "../Api/apiSlice";
 
 export default function Converstations(){
-    const { isTitlePage, setIsTitlePage }  = useContext(MenuClose);
-    const [ currentConversation, setCurrentConversation ] = useState();   
-    const [ conversationCovers, setConversationCovers  ] = useState([])
+    const { isTitlePage, setIsTitlePage }  = useContext(MenuClose); 
     const { language } = useContext(LanguageSwitch)
-
-    const getConversationCoverOnly = () => {
-        fetch(`http://localhost/php-restAPI/index.php/conversation`, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json',},
-        })
-        .then((response) =>  response.json())
-        .then((parsed) => {
-            setConversationCovers(parsed)
-            }
-        ).catch(console.error)
-    }
-
-    const getConversationById = (id) => {
-        fetch(`http://localhost/php-restAPI/index.php/conversation?conversationId=${id}&language=${language}`, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json',},
-        })
-        .then((response) =>  response.json())
-        .then((parsed) => {
-            setCurrentConversation(parsed)
-            }
-        ).catch(console.error)
-    }
+    const [ currentConversationId, setCurrentConversationId ] = useState()
 
     const handleClick = (id) => () => {
-        getConversationById(id)
         setIsTitlePage(!isTitlePage)
+        setCurrentConversationId(id)
     }
 
-    const handleLanguageChange = () => {
-        if(!isTitlePage && currentConversation){
-            getConversationById(currentConversation.id)
-        }
-    }
-
-    useEffect(getConversationCoverOnly, [])
-    useEffect(handleLanguageChange, [language])
+    const {
+        data: conversationCovers,
+        isLoading,
+        isSuccess,
+    } = useGetConversationCoverQuery()
 
     return (
+        isLoading ? <></> : isSuccess ?
         <div>
             <div style={isTitlePage? {display: "block"} : {display: "none"}}>
-            <h1 className="menuItemTitle">Learn By Conversations</h1>
+            <h1 className="menuItemTitle">{MainHeaderContent[language].PhoneMenu[0]}</h1>
             {
                 conversationCovers.map(cover => {return <ConversationCard key={cover.id} cover={cover} handleClick={handleClick(cover.id)} />})
             }
             </div>
-            <div style={isTitlePage? {display: "none"} : {display: "block"}}>                
-                <ConversationPiece conversation={currentConversation} />
+            <div>                
+                {isTitlePage ? "" : <ConversationPiece id={currentConversationId}/>}
             </div>
-        </div>
+        </div> : <></>
     )
 }

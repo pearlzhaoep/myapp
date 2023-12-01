@@ -25,7 +25,7 @@ h1 .menuItemTitle {
 
 .conversation-piece {
     margin: 0 1em;
-    padding-top: 2em;
+    padding-top: 5em;
     padding-bottom: 2em;
 }
 
@@ -39,6 +39,7 @@ h1 .menuItemTitle {
     background-color: white;
     border-radius: 100%;
     border-bottom: solid 2px rgb(181, 182, 182);
+    cursor: pointer;
 }
 
 .audioButton:active {
@@ -101,7 +102,7 @@ h1 .menuItemTitle {
 
 .dialog-nonfr{
     text-align: left;
-    margin-left: 34px;
+    margin-left: 46px;
     margin-top: 0;
     line-height: 130%;
 }
@@ -115,18 +116,22 @@ h1 .menuItemTitle {
     width: 100%;
     height: 100%;
     background:rgba(45, 45, 45, 0.7);
+    z-index: 1;
 }
 
 .withIndex {
     border-bottom: dotted black 2px;
+    cursor: pointer;
 }
 
 .fixed-top {
     position: fixed;
-    top: 4.5em;
+    top: 4em;
     display: flex;
     justify-content: center;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.717);
+    z-index: 1;
 }
 
 @media only screen and (min-width: 768px) {
